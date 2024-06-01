@@ -1,0 +1,10 @@
+.course-grid {
+     display: flex;
+      margin-top: 10rem;
+   }
+   
+   .h-title{
+     color: black;
+     position: relative;
+     top: 10rem;
+   }

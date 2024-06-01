@@ -1,0 +1,118 @@
+.courses-container {
+  max-width: 1200px;
+  margin: 40px auto;
+  padding: 10px;
+  background-color: rgb(232, 25, 56);
+  border-radius: 10px;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+}
+
+.courses-container h2 {
+  text-align: center;
+  font-size: 2.5rem;
+  margin-bottom: 30px;
+  color: #333;
+}
+
+.courses-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+  justify-content: center; /* Center the courses on the page */
+}
+
+.course-cardC {
+  background-color: #ffffff;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  width: 300px;
+  padding: 20px;
+  transition: transform 0.3s;
+}
+
+.course-cardC:hover {
+  transform: translateY(-5px);
+}
+
+.course-imageP {
+  width: 100%;
+  height: 150px;
+  border-radius: 1rem;
+  object-fit: cover;
+}
+
+.course-info {
+  padding: 20px;
+  text-align: center;
+}
+
+.course-info h3 {
+  font-size: 1.5rem;
+  margin-bottom: 10px;
+  color: rgb(232, 25, 56);
+}
+
+.teacher-info {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 15px;
+}
+
+.teacher-info .teacher-image {
+  border-radius: 50%;
+  margin-right: 10px;
+  width: 80px;
+  height: 80px;
+  object-fit: cover;
+}
+
+.course-price {
+  color: #333;
+  margin-bottom: 5px;
+  font-weight: bold;
+  font-size: 1.5rem;
+}
+
+.course-rating {
+  color: #555555;
+  font-size: 1.4rem;
+}
+
+@media (max-width: 768px) {
+  .courses-container {
+    padding: 10px;
+  }
+
+  .courses-container h2 {
+    font-size: 2rem;
+  }
+
+  .courses-list {
+    gap: 1rem;
+    margin-left: 0;
+  }
+
+  .course-cardC {
+    width: 100%;
+    max-width: 350px;
+  }
+}
+
+@media (max-width: 480px) {
+  .courses-container h2 {
+    font-size: 1.8rem;
+  }
+
+  .course-info h3 {
+    font-size: 1.3rem;
+  }
+
+  .course-price {
+    font-size: 1.3rem;
+  }
+
+  .course-rating {
+    font-size: 1.2rem;
+  }
+}

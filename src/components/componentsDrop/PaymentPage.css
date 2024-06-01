@@ -1,0 +1,29 @@
+.payment-page {
+     padding: 20px;
+   }
+   
+   .course-details {
+     display: flex;
+     flex-direction: column;
+     align-items: center;
+   }
+   
+   .course-image {
+     width: 200px;
+     height: 200px;
+     object-fit: cover;
+   }
+   
+   .pay-button {
+     margin-top: 20px;
+     padding: 10px 20px;
+     background-color: #4CAF50;
+     color: white;
+     border: none;
+     cursor: pointer;
+   }
+   
+   .pay-button:hover {
+     background-color: #45a049;
+   }
+   

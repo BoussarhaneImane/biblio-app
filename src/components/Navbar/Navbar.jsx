@@ -47,43 +47,43 @@ const Navbar = () => {
                 </div>
                 <div className="dropdown-category">
                   <span className="dropdown-title">Learning German</span>
-                  <Link to="/courses/learning-german/basic">Basic</Link>
-                  <Link to="/courses/learning-german/intermediate">Intermediate</Link>
-                  <Link to="/courses/learning-german/advanced">Advanced</Link>
+                  <Link to="/NOT">Basic</Link>
+                  <Link to="/NOT">Intermediate</Link>
+                  <Link to="/NOT">Advanced</Link>
                 </div>
                 <div className="dropdown-category">
                   <span className="dropdown-title">Mathematics</span>
-                  <Link to="/courses/mathematics/algebra">Algebra</Link>
-                  <Link to="/courses/mathematics/calculus">Calculus</Link>
-                  <Link to="/courses/mathematics/geometry">Geometry</Link>
-                  <Link to="/courses/mathematics/statistics">Statistics</Link>
+                  <Link to="/NOT">Algebra</Link>
+                  <Link to="/NOT">Calculus</Link>
+                  <Link to="/NOT">Geometry</Link>
+                  <Link to="/NOT">Statistics</Link>
                 </div>
               </div>
             </li>
             <li className='nav-item' onMouseEnter={() => handleDropdown('teachers')} onMouseLeave={() => handleDropdown('teachers')}>
               <span className='nav-link text-uppercase text-white fs-22 fw-6 ls-1'>Teachers</span>
               <div className={dropdown.teachers ? 'dropdown-menu show-dropdown' : 'dropdown-menu'}>
-                <Link to="/teachers/math">Math</Link>
-                <Link to="/teachers/science">Development</Link>
-                <Link to="/teachers/english">Languages</Link>
+                <Link to="/NOT">Math</Link>
+                <Link to="/NOT">Development</Link>
+                <Link to="/NOT">Languages</Link>
               </div>
             </li>
             <li className='nav-item' onMouseEnter={() => handleDropdown('offers')} onMouseLeave={() => handleDropdown('offers')}>
               <span className='nav-link text-uppercase text-white fs-22 fw-6 ls-1'>Offers</span>
               <div className={dropdown.offers ? 'dropdown-menu show-dropdown' : 'dropdown-menu'}>
-                <Link to="/offers/discounts">Discounts</Link>
-                <Link to="/offers/bundles">Bundles</Link>
-                <Link to="/offers/free-courses">Free Courses</Link>
+                <Link to="/NOT">Discounts</Link>
+                <Link to="/NOT">Bundles</Link>
+                <Link to="/NOT">Free Courses</Link>
               </div>
             </li>
             <li className='nav-item'>
               <Link to="/contact" className='nav-link text-uppercase text-white fs-22 fw-6 ls-1'>Contact</Link>
             </li>
             <li className='nav-item'>
-              <button id='btn1'>Log In</button>
+            <Link to="/login"><button id='btn1'>Log In</button></Link> 
             </li>
             <li className='nav-item'>
-              <button className='btntwoo'>Sign Up</button>
+            <Link to="/signup" className="nav-link"><button className='btntwoo'>Sign Up</button></Link>   
             </li>
           </ul>
         </div>

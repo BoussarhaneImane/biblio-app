@@ -3,9 +3,9 @@
   box-shadow: rgba(147, 147, 147, 0.1) 0px 10px 15px -3px, rgba(0, 0, 0, 0.05) 0px 4px 6px -2px;
   position: fixed;
   width: 100%;
-  top: 7rem; /* Adjust according to the height of the informational bar */
+  top: 7rem;
   left: 0;
-  z-index: 1000; /* Ensure it's below the informational bar but above other content */
+  z-index: 1000; 
   background-color: white;
 }
 
@@ -34,7 +34,7 @@
 .navbar-collapse {
   position: fixed;
   right: 0;
-  top: 4rem; /* Adjust according to the height of the informational bar */
+  top: 4rem; 
   z-index: 10;
   background-color: var(--black-color);
   height: 100%;
@@ -168,7 +168,7 @@
     background-color: transparent;
     transform: translateX(0);
     justify-content: flex-end;
-    top: 0; /* Reset top position */
+    top: 0; 
   }
 
   .navbar-toggler-btn {

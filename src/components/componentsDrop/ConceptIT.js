@@ -1,6 +1,5 @@
 import React from 'react';
-
-import { useNavigate} from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import './ConceptIT.css';
 import img1 from '../../images/cr1.jpg';
 import img2 from '../../images/cr2.jpg';
@@ -25,13 +24,15 @@ import FirstNav from '../../components/Navbar/FirstNav';
 import Navbar from '../../components/Navbar/Navbar';
 
 const ConceptIT = () => {
-  const navigte = useNavigate();
+  const navigate = useNavigate();
+
   const handleTakeItClick = (course) => {
-    navigte({
-      pathname: '/payment',
-      state: course
-    });
+    const cart = JSON.parse(localStorage.getItem('cart')) || [];
+    cart.push(course);
+    localStorage.setItem('cart', JSON.stringify(cart));
+    navigate('/payment');
   };
+
   const categories = [
     {
       title: "Web Development",
@@ -193,8 +194,8 @@ const ConceptIT = () => {
 
   return (
     <>
-      <FirstNav/>
-      <Navbar/>
+      <FirstNav />
+      <Navbar />
       <div className="concept-it">
         <h1>Concept IT Courses</h1>
         {categories.map((category, index) => (
@@ -202,7 +203,7 @@ const ConceptIT = () => {
             <h2>{category.title}</h2>
             <div className="course-gridX">
               {category.courses.map((course, index) => (
-                <div key={index}  className="course-cardH">
+                <div key={index} className="course-cardH">
                   <img src={course.imgSrc} alt={course.label} className="course-imageC" />
                   <span className="course-label">{course.label}</span>
                   <p className="course-description">{course.description}</p>
@@ -213,7 +214,7 @@ const ConceptIT = () => {
             </div>
           </div>
         ))}
-        <Footer/>
+        <Footer />
       </div>
     </>
   );

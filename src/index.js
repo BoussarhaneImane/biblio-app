@@ -8,7 +8,7 @@ import EnglishCourses from './components/componentsDrop/EnglishCourses';
 import PaymentPage from './components/componentsDrop/Payment';
 import PageNot from './components/componentsDrop/PageNot';
 import Login from './components/connexion/Login';
-import Signup from './components/connexion/SignupC';
+import SignupC from './components/connexion/SignupC';
 
 
 ReactDOM.render(
@@ -21,7 +21,7 @@ ReactDOM.render(
       <Route path="/payment"  element={<PaymentPage/>} />
       <Route path="/NOT"  element={<PageNot/>}/>
       <Route path="/login"  element={<Login/>}/>
-      <Route path="/signup"  element={<Signup/>}/>
+      <Route path="/signup"  element={<SignupC/>}/>
     </Routes>
   </BrowserRouter>,
   document.getElementById('root')

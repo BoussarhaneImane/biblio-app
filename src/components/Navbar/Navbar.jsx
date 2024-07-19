@@ -1,12 +1,14 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import './Navbar.css';
 import { HiOutlineMenuAlt3, HiOutlineX } from 'react-icons/hi';
+import { FaUser } from 'react-icons/fa'; // Import de l'icône FaUser
 import imglogo from '../../images/logo2.png';
 
 const Navbar = () => {
   const [toggleMenu, setToggleMenu] = useState(false);
   const [dropdown, setDropdown] = useState({ courses: false, teachers: false, offers: false });
+  const [userName, setUserName] = useState('');
 
   const handleNavbar = () => setToggleMenu(!toggleMenu);
 
@@ -15,6 +17,19 @@ const Navbar = () => {
       ...prevState,
       [menu]: !prevState[menu],
     }));
+  };
+
+  // Exécuté une seule fois lors du montage du composant
+  useEffect(() => {
+    const storedUserName = localStorage.getItem('userName');
+    if (storedUserName) {
+      setUserName(storedUserName);
+    }
+  }, []);
+
+  const handleLogout = () => {
+    localStorage.removeItem('userName');
+    setUserName('');
   };
 
   return (
@@ -77,14 +92,29 @@ const Navbar = () => {
               </div>
             </li>
             <li className='nav-item'>
-              <Link to="/contact" className='nav-link text-uppercase text-white fs-22 fw-6 ls-1'>Contact</Link>
+              <Link to="/signup" className='nav-link text-uppercase text-white fs-22 fw-6 ls-1 ' style={{marginRight:'2rem'}} >Contact</Link>
             </li>
-            <li className='nav-item'>
-            <Link to="/login"><button id='btn1'>Log In</button></Link> 
-            </li>
-            <li className='nav-item'>
-            <Link to="/signup" className="nav-link"><button className='btntwoo'>Sign Up</button></Link>   
-            </li>
+            {userName ? (
+              <>
+                <span className="nav-link text-white flex items-center">
+                  <span className="mr-1" style={{color:'#d52343'}}>Welcome</span>
+                  <FaUser className="mr-1" style={{fontSize:'3rem'}} /> 
+                  <p style={{color:'#d52343'}}>{userName}</p>
+                </span>
+                <li className='nav-item'>
+                  <Link to="/" onClick={handleLogout} className="nav-link"><button id='btn1'>Log out</button></Link>
+                </li>
+              </>
+            ) : (
+              <>
+                <li className='nav-item'>
+                  <Link to="/signup" className="nav-link"><button id='btn1'>Sign Up</button></Link>
+                </li>
+                <li className='nav-item'>
+                  <Link to="/login" className="nav-link"><button className='btntwoo'>Log In</button></Link>
+                </li>
+              </>
+            )}
           </ul>
         </div>
       </div>
@@ -93,8 +123,3 @@ const Navbar = () => {
 };
 
 export default Navbar;
-
-
-
-
-

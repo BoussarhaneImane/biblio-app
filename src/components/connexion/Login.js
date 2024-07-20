@@ -42,9 +42,6 @@ const handleSubmit = async (e) => {
     <>
       <div className="auth-container login-container">
         <Link to='/' className="back-link">Back to our site</Link>
-        {loading && <div className="fixed inset-0 flex justify-center items-center bg-gray-900 bg-opacity-50 z-50">
-                <div className="loader">Loading page...</div>
-            </div>}
         <div className="auth-form login-form">
           <h2>Login</h2>
           <form onSubmit={handleSubmit}>
@@ -56,7 +53,9 @@ const handleSubmit = async (e) => {
               <input type="password" onChange={handleChange}/>
               <label>Password</label>
             </div>
-            <button type="submit" className="auth-button">Login</button>
+            <button type="submit" className="auth-button" disabled={loading}>
+            {loading ? 'Log In...' : 'Log In'}
+          </button>
           </form>
         </div>
       </div>

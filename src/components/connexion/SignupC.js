@@ -26,7 +26,7 @@ const SignupC = () => {
     setLoading(true);
     console.log('Submitting:', formData);
     try {
-      const response = await axios.post('https://backend-biblio.onrender.com/register', formData);
+      const response = await axios.post('https://backend-biblio-4.onrender.com/register', formData);
       console.log('Response:', response.data);
       setFormData({
         name: '',

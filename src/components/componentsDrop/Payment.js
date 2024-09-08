@@ -75,7 +75,7 @@ const Payment = () => {
       const paymentResult = 'dummy_payment_result'; // Replace with actual payment result from your payment gateway
 
       // Send order details to API
-      await axios.post(`https://backend-biblio.onrender.com/orders/${userId}`, {
+      await axios.post(`https://backend-biblio-4.onrender.com/orders/${userId}`, {
         items: cart,
         total,
         paymentResult

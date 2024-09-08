@@ -26,13 +26,22 @@ import Navbar from '../../components/Navbar/Navbar';
 const ConceptIT = () => {
   const navigate = useNavigate();
 
+ 
   const handleTakeItClick = (course) => {
-    const cart = JSON.parse(localStorage.getItem('cart')) || [];
-    cart.push(course);
-    localStorage.setItem('cart', JSON.stringify(cart));
-    navigate('/payment');
-  };
+    const userName = localStorage.getItem('userName'); // Check for authentication
 
+    if (!userName) {
+      alert('You must be authenticated to proceed to payment.');
+      navigate('/login'); // Redirect to login page if not authenticated
+    } else {
+      const cartKey = `cart_${userName}`;
+      const cart = JSON.parse(localStorage.getItem(cartKey)) || [];
+      cart.push(course);
+      localStorage.setItem(cartKey, JSON.stringify(cart));
+      navigate('/payment'); // Redirect to payment page
+    }
+  };
+  
   const categories = [
     {
       title: "Web Development",

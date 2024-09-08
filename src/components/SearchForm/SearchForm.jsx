@@ -1,11 +1,13 @@
 import React, { useState } from 'react';
 import { FaSearch } from 'react-icons/fa';
 import { courses } from '../Bares/data'; 
+import { useNavigate } from 'react-router-dom';
 import './SearchForm.css';
 
 const SearchForm = () => {
   const [query, setQuery] = useState('');
   const [filteredCourses, setFilteredCourses] = useState([]);
+  const navigate = useNavigate();
 
   const handleInputChange = (e) => {
     const searchQuery = e.target.value;
@@ -18,6 +20,25 @@ const SearchForm = () => {
       setFilteredCourses(results);
     } else {
       setFilteredCourses([]);
+    }
+  };
+
+  const handleTakeItClick = (course) => {
+    const userName = localStorage.getItem('userName');
+    if (!userName) {
+      alert('You must be authenticated to proceed to payment.');
+      navigate('/login');
+    } else {
+      const cartKey = `cart_${userName}`;
+      const cart = JSON.parse(localStorage.getItem(cartKey)) || [];
+      cart.push({
+        name: course.name,
+        price: course.price,
+        imgSrc: course.image,
+        quantity: 1
+      });
+      localStorage.setItem(cartKey, JSON.stringify(cart));
+      navigate('/payment');
     }
   };
 
@@ -49,7 +70,7 @@ const SearchForm = () => {
                     <p>Instructor: {course.instructor}</p>
                     <p>Price: {course.price}</p>
                     <p>Rating: {course.rating} ⭐</p>
-                    <button>TAKE IT</button>
+                    <button onClick={() => handleTakeItClick(course)}>TAKE IT</button>
                   </div>
                 </div>
               ))}
@@ -59,6 +80,6 @@ const SearchForm = () => {
       </div>
     </div>
   );
-}
+};
 
 export default SearchForm;

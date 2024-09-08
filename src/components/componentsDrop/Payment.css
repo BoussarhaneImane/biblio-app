@@ -42,6 +42,32 @@ margin: 10rem;
   color: #333;
   margin: 10px 0;
 }
+.quantity-control {
+  display: flex;
+  align-items: center;
+}
+
+.quantity-control button {
+  background-color: #f0f0f0;
+  border: none;
+  padding: 5px 10px;
+  cursor: pointer;
+  margin: 10px;
+}
+
+.quantity-control span {
+  margin: 0 10px;
+  font-size: 19px;
+}
+
+.delete-icon {
+  font-size: 6rem;
+  font-weight: bold;
+  color: rgb(232, 8, 8);
+  cursor: pointer;
+  margin-left: 8px;
+}
+
 
 .pay-button {
 

@@ -23,9 +23,11 @@ const SignupC = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    setLoading(true); // Démarrer le chargement
+    setLoading(true);
+    console.log('Submitting:', formData);
     try {
-      const response = await axios.post('https://backend-projecteco.onrender.com/register', formData);
+      const response = await axios.post('https://backend-biblio.onrender.com/register', formData);
+      console.log('Response:', response.data);
       setFormData({
         name: '',
         email: '',
@@ -34,12 +36,12 @@ const SignupC = () => {
       localStorage.setItem('userName', formData.name);
       navigate('/');
     } catch (error) {
-      console.error('Error during registration:', error.response.data);
+      console.error('Error during registration:', error.response ? error.response.data : error.message);
     } finally {
-      setLoading(false); // Arrêter le chargement
+      setLoading(false);
     }
   };
-
+  
   return (
     <div className="auth-container signup-container">
       <Link to='/' className="back-link">Back to our site</Link>
@@ -47,18 +49,37 @@ const SignupC = () => {
         <h2>Signup</h2>
         <form onSubmit={handleSubmit}>
           <div className="input-group">
-            <input type="text" name="name" value={formData.name} onChange={handleChange}  />
+            <input 
+              type="text" 
+              name="name" 
+              value={formData.name} 
+              onChange={handleChange}  
+            />
             <label>Username</label>
           </div>
           <div className="input-group">
-            <input type="email" name="email" value={formData.email} onChange={handleChange}  />
+            <input 
+              type="email" 
+              name="email" 
+              value={formData.email} 
+              onChange={handleChange}  
+            />
             <label>Email</label>
           </div>
           <div className="input-group">
-            <input type="password" name="password" value={formData.password} onChange={handleChange}  />
+            <input 
+              type="password" 
+              name="password" 
+              value={formData.password} 
+              onChange={handleChange}  
+            />
             <label>Password</label>
           </div>
-          <button type="submit" className="auth-button" disabled={loading}>
+          <button 
+            type="submit" 
+            className="auth-button" 
+            disabled={loading}
+          >
             {loading ? 'Signing up...' : 'Signup'}
           </button>
         </form>

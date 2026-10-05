@@ -1,9 +1,9 @@
-.course-grid {
+.english-courses-page .course-grid {
      display: flex;
       margin-top: 20rem;
    }
    
-   .h-title{
+  .english-courses-page .h-title{
      color: black;
      position: relative;
      top: 20rem;
@@ -11,7 +11,7 @@
 
 
    @media (max-width: 480px) {
-    .h-title{
+    .english-courses-page .h-title{
       font-size: 3rem;
     }
   }

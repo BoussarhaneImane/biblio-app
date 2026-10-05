@@ -29,7 +29,7 @@ const SearchForm = () => {
       alert('You must be authenticated to proceed to payment.');
       navigate('/login');
     } else {
-      const cartKey = `cart_${userName}`;
+      const cartKey = `cart_${localStorage.getItem('userId') || userName}`;
       const cart = JSON.parse(localStorage.getItem(cartKey)) || [];
       cart.push({
         name: course.name,

@@ -1,4 +1,4 @@
-.course-grid {
+.english-courses-page .course-grid {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
@@ -6,13 +6,13 @@
   padding: 10rem;
 }
 
-.h-title {
+.english-courses-page .h-title {
   color: black;
   text-align: center;
   margin-top: 2rem;
 }
 
-.course-card {
+.english-courses-page .course-card {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -26,19 +26,19 @@
   cursor: pointer;
 }
 
-.course-card:hover {
+.english-courses-page .course-card:hover {
   transform: translateX(-5px);
   box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
 }
 
-.course-title {
+.english-courses-page .course-title {
   color: #ef304c;
   font-size: 1.8rem;
   text-align: center;
   
 }
 
-.imgs {
+.english-courses-page .imgs {
   margin: 20px 0;
   width: 100%;
   height: 200px;
@@ -46,27 +46,27 @@
   border-radius: 8px;
 }
 
-.course-description {
+.english-courses-page .course-description {
   color: #555;
   font-size: 1.4rem;
   margin-top: 15px;
   text-align: center;
 }
 
-.course-details {
+.english-courses-page .course-details {
   display: flex;
   justify-content: space-between;
   align-items: center;
   margin-top: 1rem;
 }
 
-.price {
+.english-courses-page .price {
   font-size: 1.8rem;
   font-weight: bold;
   color: #333;
 }
 
-.btn-enroll {
+.english-courses-page .btn-enroll {
   background: linear-gradient(45deg, #f7667c, #d4203b);
   color: white;
   padding: 1rem;
@@ -79,23 +79,23 @@
   text-align: center;
 }
 
-.btn-enroll:hover {
+.english-courses-page .btn-enroll:hover {
   background: linear-gradient(45deg, #d4203b, #ef304c);
   transform: scale(1.05);
 }
 
 /* Responsive Design for Smaller Screens */
 @media (max-width: 768px) {
-  .course-card {
+  .english-courses-page .course-card {
     width: 80%;
     margin: 20px 0;
   }
 
-  .course-description {
+  .english-courses-page .course-description {
     font-size: 1.2rem;
   }
 
-  .btn-enroll {
+  .english-courses-page .btn-enroll {
     width: 10rem;
     padding: 1rem;
     font-size: 1rem;
@@ -103,16 +103,16 @@
 }
 
 @media (max-width: 480px) {
-  .course-card {
+  .english-courses-page .course-card {
     width: 90%;
     margin: 10px 0;
   }
 
-  .course-description {
+  .english-courses-page .course-description {
     font-size: 1rem;
   }
 
-  .btn-enroll {
+  .english-courses-page .btn-enroll {
     width: 8rem;
     padding: 0.8rem;
     font-size: 1rem;

@@ -4,18 +4,17 @@ import Navbar from '../Navbar/Navbar';
 import FirstNav from '../Navbar/FirstNav';
 import Footer from '../Bares/Footer';
 import { RiDeleteBin5Fill } from "react-icons/ri";
-import axios from 'axios';
 
 const Payment = () => {
   const [cart, setCart] = useState([]);
   const [total, setTotal] = useState(0);
 
-  const userName = localStorage.getItem('userName'); 
-  const userId = localStorage.getItem('userId'); 
+  const userName = localStorage.getItem('userName');
+  const userKey = localStorage.getItem('userId') || userName;
 
   useEffect(() => {
-    if (userName) {
-      const cartKey = `cart_${userName}`;
+    if (userKey) {
+      const cartKey = `cart_${userKey}`;
       const cartItems = JSON.parse(localStorage.getItem(cartKey)) || [];
       setCart(cartItems);
 
@@ -26,7 +25,7 @@ const Payment = () => {
       }, 0);
       setTotal(totalPrice);
     }
-  }, [userName]); // Only depend on userName
+  }, [userKey]);
 
   const handleQuantityChange = (index, change) => {
     setCart(prevCart => {
@@ -47,7 +46,7 @@ const Payment = () => {
       setTotal(totalPrice);
 
       if (userName) {
-        const cartKey = `cart_${userName}`;
+        const cartKey = `cart_${userKey}`;
         localStorage.setItem(cartKey, JSON.stringify(updatedCart));
       }
       return updatedCart;
@@ -58,38 +57,27 @@ const Payment = () => {
     setCart(prevCart => {
       const updatedCart = prevCart.filter((_, i) => i !== index);
       if (userName) {
-        const cartKey = `cart_${userName}`;
+        const cartKey = `cart_${userKey}`;
         localStorage.setItem(cartKey, JSON.stringify(updatedCart));
       }
       return updatedCart;
     });
   };
 
-  const handlePayment = async () => {
-    if (!userId) {
-      alert('User ID is missing. Please log in again.');
+  const handlePayment = () => {
+    if (!userKey) {
+      alert('Connectez-vous pour enregistrer votre reçu de démonstration.');
       return;
     }
 
-    try {
-      const paymentResult = 'dummy_payment_result'; // Replace with actual payment result from your payment gateway
-
-      // Send order details to API
-      await axios.post(`https://backend-biblio-4.onrender.com/orders/${userId}`, {
-        items: cart,
-        total,
-        paymentResult
-      });
-
-      alert('Payment successful!');
-      if (userName) {
-        localStorage.removeItem(`cart_${userName}`);
-      }
-      setCart([]);
-      setTotal(0);
-    } catch (error) {
-      console.error('Error during payment:', error);
-    }
+    const ordersKey = `orders_${userKey}`;
+    const orders = JSON.parse(localStorage.getItem(ordersKey) || '[]');
+    orders.push({ items: cart, total, createdAt: new Date().toISOString(), simulated: true });
+    localStorage.setItem(ordersKey, JSON.stringify(orders));
+    localStorage.removeItem(`cart_${userKey}`);
+    alert('Commande de démonstration enregistrée. Aucun paiement réel n’a été effectué.');
+    setCart([]);
+    setTotal(0);
   };
 
   return (

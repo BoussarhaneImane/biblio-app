@@ -34,7 +34,7 @@ const ConceptIT = () => {
       alert('You must be authenticated to proceed to payment.');
       navigate('/login'); // Redirect to login page if not authenticated
     } else {
-      const cartKey = `cart_${userName}`;
+      const cartKey = `cart_${localStorage.getItem('userId') || userName}`;
       const cart = JSON.parse(localStorage.getItem(cartKey)) || [];
       cart.push(course);
       localStorage.setItem(cartKey, JSON.stringify(cart));
